@@ -1,4 +1,4 @@
-service: demo-bigdata2
+service: demo-bigdata
 
 provider:
   name: aws
