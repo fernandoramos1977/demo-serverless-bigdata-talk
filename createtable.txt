@@ -1,0 +1,30 @@
+
+CREATE DATABASE tdc;
+####################
+
+CREATE EXTERNAL TABLE IF NOT EXISTS tdc.companyfunding (
+permalink	STRING,
+company STRING,
+numEmps INT,
+category STRING,
+city STRING,
+state STRING,
+fundedDate STRING,
+raisedAmt	INT,
+raisedCurrency STRING,
+round STRING
+)
+ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe'
+WITH SERDEPROPERTIES (
+ 'serialization.format' = ',',
+ 'field.delim' = ','
+) 
+LOCATION 's3://<nomedoseubucket>/';
+
+####################
+
+SELECT * from tdc.companyfunding LIMIT 20;
+
+####################
+
+SELECT count(*) from tdc.companyfunding;
